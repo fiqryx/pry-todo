@@ -1,0 +1,17 @@
+# Watch all files in current directory
+root = "."
+
+# Which extensions to watch
+ext = ["go", "mod"]
+
+# Directories to ignore
+exclude_dir = ["vendor", "test", ".git"]
+
+# What command to run on change
+cmd = "go run ."
+
+# Delay before restart (optional, default 100ms)
+delay = 100
+
+# Log color (optional)
+color = "cyan"

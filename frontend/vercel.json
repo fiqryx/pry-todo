@@ -1,0 +1,8 @@
+{
+    "functions": {
+        "src/app/**/*.js": {
+            "maxDuration": 30,
+            "includeFiles": "src/services/**"
+        }
+    }
+}
