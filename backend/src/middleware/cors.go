@@ -11,7 +11,7 @@ func Cors() gin.HandlerFunc {
 	config.AllowOrigins = []string{
 		"http://localhost:3001",
 		"https://localhost:3001",
-		"https://task-manager-ochre-phi.vercel.app",
+		"https://pry-todo.vercel.app",
 	}
 
 	config.AllowHeaders = []string{
