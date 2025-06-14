@@ -2,6 +2,8 @@
 
 A powerful and intuitive project management web application inspired by Jira, built for modern teams who need flexibility and clarity in their workflow management.
 
+[![Pry](./screenshots/main-page.png)](https://pry-todo.vercel.app/)
+
 ## ✨ Features
 
 - **📋 Kanban Board** - Visual task management with drag & drop functionality
@@ -12,6 +14,8 @@ A powerful and intuitive project management web application inspired by Jira, bu
 - **👥 Team Collaboration** - Multi-user support with role-based permissions
 - **📸 File Attachments** - Upload and manage project assets with Cloudinary
 - **📧 Email Notifications** - Stay updated on project changes
+
+[![Pry](./screenshots/analytic-pages.png)](https://pry-todo.vercel.app/)
 
 ## 🛠️ Tech Stack
 
@@ -39,8 +43,8 @@ You'll also need accounts and API keys for:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/prytodo.git
-cd prytodo
+git clone https://github.com/fiqryx/pry-todo.git
+cd pry-todo
 ```
 
 ### 2. Environment Setup
@@ -144,7 +148,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/yourusername/prytodo/issues) page
+1. Check the [Issues](https://github.com/fiqryx/pry-todo/issues) page
 2. Create a new issue with detailed information
 3. Contact the maintainers
 
