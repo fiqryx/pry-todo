@@ -269,7 +269,7 @@ function Category({
                         </Tooltip>
                     )}
                 </div>
-                <div ref={columnRef} className="h-full">
+                <div ref={columnRef} className="h-full min-h-96">
                     <ScrollArea>
                         <div style={{ height: `${columnHeight}px` }}>
                             <ul className="mt-1 xl:max-w-[260px] px-3 pb-1">
