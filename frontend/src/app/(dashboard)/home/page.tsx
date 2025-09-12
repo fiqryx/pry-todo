@@ -10,7 +10,7 @@ export const metadata = createMetadata({ title: 'Projects' });
 
 export default function Page() {
     return (
-        <Dashboard className="container mx-auto lg:pt-12">
+        <Dashboard className="lg:pt-12">
             <FilterHydrator>
                 <ProjectActions className="gap-2 lg:gap-4" />
                 <div className="flex flex-col gap-5">

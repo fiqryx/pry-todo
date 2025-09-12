@@ -33,7 +33,7 @@ async function BacklogLoader() {
 
 export default function Page() {
     return (
-        <Dashboard className="container mx-auto lg:pt-12">
+        <Dashboard className="lg:pt-12">
             <Suspense fallback={<BacklogFallback />}>
                 <BacklogLoader />
             </Suspense>

@@ -10,7 +10,7 @@ export const metadata = createMetadata({ title: 'Settings' });
 
 export default async function Page() {
     return (
-        <Dashboard className="container mx-auto lg:pt-12">
+        <Dashboard className="lg:pt-12">
             <div className="grid xl:grid-cols-3 gap-8">
                 <div className="flex flex-col gap-8">
                     <SettingsBasic />

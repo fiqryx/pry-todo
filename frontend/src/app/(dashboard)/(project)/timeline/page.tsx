@@ -34,7 +34,7 @@ async function Content() {
 
 export default function Page() {
     return (
-        <Dashboard className="container mx-auto lg:max-w-[100rem]">
+        <Dashboard className="xlg:max-w-[100rem]">
             <Suspense fallback={<TimelineFallback />}>
                 <Content />
             </Suspense>

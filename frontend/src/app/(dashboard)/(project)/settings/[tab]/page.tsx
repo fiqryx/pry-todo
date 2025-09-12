@@ -44,7 +44,7 @@ async function Comp({ params }: Params) {
     if (!tab) notFound();
 
     return (
-        <div className="grid">
+        <div className="grid gap-4">
             <Translate as="h1" capitalize value={tab.path} className="text-3xl font-bold tracking-tight" />
             <Tabs value={tab.path} className="w-full">
                 <TabsList className="flex flex-wrap w-fit h-fit justify-around">
@@ -68,7 +68,7 @@ async function Comp({ params }: Params) {
 
 export default function Page({ params }: Params) {
     return (
-        <Dashboard className="container max-w-7xl mx-auto lg:pt-12">
+        <Dashboard className="lg:pt-12">
             <Suspense fallback={<SettingsFallback />}>
                 <Comp params={params} />
             </Suspense>

@@ -193,7 +193,7 @@ const InputTiptapEditor = forwardRef<Editor, InputTiptapEditorProps>(
                     >
                         <div
                             className={cn(
-                                'tiptap xProseMirror text-sm text-muted-foreground cursor-default',
+                                'tiptap xProseMirror text-sm text-muted-foreground cursor-default prose leading-tight overflow-hidden',
                                 disabled && 'cursor-not-allowed'
                             )}
                             dangerouslySetInnerHTML={{ __html: value || placeholder || '' }}

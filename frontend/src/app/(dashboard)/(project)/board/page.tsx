@@ -34,7 +34,7 @@ async function Children() {
 
 export default function Page() {
     return (
-        <Dashboard className="container mx-auto lg:pt-6">
+        <Dashboard className="lg:pt-6">
             <Suspense fallback={<BoardFallback />}>
                 <Children />
             </Suspense>
