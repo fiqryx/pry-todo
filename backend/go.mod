@@ -14,8 +14,6 @@ require (
 	filippo.io/edwards25519 v1.1.0 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
-	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
-	github.com/google/pprof v0.0.0-20230821062121-407c9e7a662f // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gookit/color v1.5.4 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
@@ -29,9 +27,8 @@ require (
 	github.com/klauspost/compress v1.18.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/onsi/ginkgo/v2 v2.12.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
-	github.com/quic-go/quic-go v0.51.0 // indirect
+	github.com/quic-go/quic-go v0.54.1 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/supabase-community/functions-go v0.0.0-20220927045802-22373e6cb51d // indirect
 	github.com/supabase-community/postgrest-go v0.0.11 // indirect
