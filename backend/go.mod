@@ -42,9 +42,9 @@ require (
 	github.com/zishang520/socket.io-go-parser/v2 v2.4.6 // indirect
 	github.com/zishang520/webtransport-go v0.8.7 // indirect
 	go.uber.org/mock v0.5.1 // indirect
-	golang.org/x/mod v0.18.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
-	golang.org/x/tools v0.22.0 // indirect
+	golang.org/x/mod v0.29.0 // indirect
+	golang.org/x/sync v0.18.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gorm.io/driver/mysql v1.5.6 // indirect
 )
@@ -74,10 +74,10 @@ require (
 	github.com/ugorji/go/codec v1.2.12 // indirect
 	github.com/zishang520/socket.io/v2 v2.4.11
 	golang.org/x/arch v0.15.0 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
-	golang.org/x/net v0.38.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/mail.v2 v2.3.1
 	gopkg.in/yaml.v3 v3.0.1 // indirect
