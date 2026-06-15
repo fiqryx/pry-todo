@@ -11,7 +11,12 @@ type Enum struct {
 }
 
 func (e *Enum) CreateQuery() string {
-	return fmt.Sprintf("CREATE TYPE IF NOT EXISTS %s AS ENUM ('%s')", e.Name, strings.Join(e.Values, "', '"))
+	return fmt.Sprintf(`DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = '%s') THEN
+        CREATE TYPE %s AS ENUM ('%s');
+    END IF;
+END $$;`, e.Name, e.Name, strings.Join(e.Values, "', '"))
 }
 
 func (e *Enum) UpdateQuery() string {

@@ -7,7 +7,7 @@ import (
 	s "github.com/zishang520/socket.io/v2/socket"
 )
 
-func WebSocketAuth(userRepo *repo.UserRepository) s.NamespaceMiddleware {
+func WebSocketAuth(userRepo *repo.UserRepository) func(*s.Socket, func(*s.ExtendedError)) {
 	return func(socket *s.Socket, next func(*s.ExtendedError)) {
 		auth := socket.Handshake().Auth
 		if auth == nil {
