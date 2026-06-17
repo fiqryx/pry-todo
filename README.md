@@ -69,6 +69,7 @@ DATABASE_URL=your_postgresql_connection_string
 
 # Supabase Configuration
 SUPABASE_URL=your_supabase_project_url
+SUPABASE_JWT_SECRET=your_supabase_jwt_secret
 SUPABASE_ANON_KEY=your_supabase_anon_key
 
 # Cloudinary Configuration
@@ -129,6 +130,30 @@ Configure your SMTP settings for email notifications:
 3. **Use Kanban Board** - Drag and drop tasks between columns
 4. **Track Progress** - Monitor project timeline and analytics
 5. **Collaborate** - Invite team members and assign tasks
+
+
+## How to build
+- **Windows**
+```bash
+$ ./build.sh --os windows --arch amd64
+# for arm64
+$ ./build.sh --os windows --arch arm64
+```
+
+- **Linux**
+```bash
+$ ./build.sh --os linux --arch amd64
+# for arm64
+$ ./build.sh --os linux --arch arm64
+```
+
+- **Docker**
+```bash
+$ ./build.sh --os linux --arch amd64
+$ cp .build/backend/.env.example .build/backend/.env
+$ cp .build/frontend/.env.example .build/frontend/.env
+$ docker compose up -d --build
+```
 
 ## 🤝 Contributing
 

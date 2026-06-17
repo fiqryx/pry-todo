@@ -5,7 +5,6 @@ go 1.25.0
 require (
 	github.com/fatih/color v1.18.0
 	github.com/gin-gonic/gin v1.10.0
-	github.com/supabase-community/gotrue-go v1.2.0
 	github.com/supabase-community/supabase-go v0.0.4
 	gorm.io/gorm v1.25.12
 )
@@ -35,6 +34,7 @@ require (
 	github.com/quic-go/webtransport-go v0.6.0 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/supabase-community/functions-go v0.0.0-20220927045802-22373e6cb51d // indirect
+	github.com/supabase-community/gotrue-go v1.2.0 // indirect
 	github.com/supabase-community/postgrest-go v0.0.11 // indirect
 	github.com/supabase-community/storage-go v0.7.0 // indirect
 	github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80 // indirect
@@ -65,6 +65,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.26.0 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/joho/godotenv v1.5.1
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.10 // indirect

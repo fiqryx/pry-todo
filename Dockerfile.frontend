@@ -1,0 +1,12 @@
+FROM oven/bun:1-alpine
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3001
+ENV HOSTNAME="0.0.0.0"
+
+COPY .build/frontend ./
+
+EXPOSE 3001
+
+CMD ["bun", "server.js"]

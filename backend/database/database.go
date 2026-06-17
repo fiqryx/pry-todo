@@ -51,9 +51,9 @@ func Connect(dsn string, debug bool) {
 			log.Fatalf("Database SQL DB instance error: %v", err)
 		}
 
-		sqlDB.SetMaxOpenConns(10)
-		sqlDB.SetMaxIdleConns(5)
-		sqlDB.SetConnMaxLifetime(time.Hour)
+		sqlDB.SetMaxOpenConns(50)
+		sqlDB.SetMaxIdleConns(25)
+		sqlDB.SetConnMaxLifetime(time.Minute * 15)
 
 		supabase, err = s.NewClient(
 			c.Env("SUPABASE_URL"),

@@ -1,12 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   images: {
-    domains: [
-      "localhost",
-      "res.cloudinary.com",
-      "lh3.googleusercontent.com",
-      "avatars.githubusercontent.com",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

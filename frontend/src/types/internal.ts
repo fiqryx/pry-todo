@@ -31,3 +31,27 @@ export const ISSUE_COLOR_MAP: ValueMap<IssueEnum, string> = {
     on_progress: 'text-primary',
     done: 'text-success',
 } as const;
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+
+export const BACKEND_URL = (() => {
+    if (API_URL) return API_URL;
+
+    if (typeof window !== "undefined") {
+        const protocol = window.location.protocol;        // "http:" or "https:"
+        const currentHostname = window.location.hostname; // "localhost", "192.168.1.13", atau "domain.com"
+        const isLocalOrIP = currentHostname === "localhost" || currentHostname === "127.0.0.1" || /^[0-9.]+$/.test(currentHostname);
+
+        if (isLocalOrIP) {
+            return `${protocol}//${currentHostname}:8000/api`; // "[protocol]://[hostname]:8000"
+        }
+
+        if (currentHostname.startsWith("todo.")) {
+            return `${protocol}//${currentHostname.replace("todo.", "api-todo.")}/api`;
+        }
+
+        return `${protocol}//api.${currentHostname}/api`; // "[protocol]://api.domain.com"
+    }
+
+    return "http://localhost:8000/api"; // fallback
+})();

@@ -28,14 +28,14 @@ async function AuthLoader({
         return <UserCreateForm data={session} />
     }
 
+    if (!user) {
+        return <Loading variant="spinner" />
+    }
+
     const { data = [] } = await getProjects({
         status: 'active',
         sort: 'createdAt'
     });
-
-    if (!user) {
-        return <Loading variant="spinner" />
-    }
 
     return (
         <AuthProvider user={user} projects={data}>

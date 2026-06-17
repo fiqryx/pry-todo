@@ -7,7 +7,7 @@ import (
 
 type IssueItem struct {
 	ID        string              `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
-	IssueID   string              `gorm:"type:uuid" json:"issueId"`
+	IssueID   string              `gorm:"type:uuid;index" json:"issueId"`
 	Type      types.IssueItemType `gorm:"not null;type:issue_item_type;" json:"type"`
 	AssetID   *string             `json:"assetId"`
 	PublicID  *string             `json:"publicId"`

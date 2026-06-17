@@ -9,16 +9,17 @@ type Data<T = { user: User }> = T
 
 export async function getUser() {
     try {
-        const supabase = await createClient();
-        const { data } = await supabase.auth.getUser();
-
         const { user, code } = await service<Data>('/user', {
             method: 'GET'
         })
 
         if (!user && code === 403) {
+            const supabase = await createClient();
+            const { data: { session } } = await supabase.auth.getSession()
+            const user = session?.user;
+
             logger.debug('user not registered', { user });
-            return { code, data: data?.user, error: 'User not registered' }
+            return { code, data: user, error: 'User not registered' }
         }
 
         return { user };

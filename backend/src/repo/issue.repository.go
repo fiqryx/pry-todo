@@ -225,7 +225,7 @@ func (r *IssueRepository) UpdateSequenceTx(tx *gorm.DB, issue *model.Issue, dire
 	var updateCases []string
 
 	for i, item := range reordered {
-		updateCases = append(updateCases, "WHEN ? THEN ?")
+		updateCases = append(updateCases, "WHEN ? THEN ?::bigint")
 		params = append(params, item.ID, i)
 	}
 

@@ -7,7 +7,7 @@ import (
 
 type Project struct {
 	ID                string                `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id" `
-	OwnerID           string                `json:"ownerId" `
+	OwnerID           string                `gorm:"type:uuid;index" json:"ownerId"`
 	Name              string                `gorm:"not null" json:"name" `
 	Category          *string               `json:"category,omitempty"`
 	Description       *string               `json:"description,omitempty"`

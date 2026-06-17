@@ -24,7 +24,7 @@ func (ctrl *UserController) GetUser(c *gin.Context) {
 		return
 	}
 
-	user, err := ctrl.userService.GetUserByID(ctx.ID.String())
+	user, err := ctrl.userService.GetUserByID(ctx.ID)
 	if err != nil {
 		c.AbortWithStatusJSON(403, gin.H{"error": "Unregistered"})
 		return
@@ -47,7 +47,7 @@ func (ctrl *UserController) RegisterUser(c *gin.Context) {
 	}
 
 	user, err := ctrl.userService.RegisterUserSupabase(
-		ctx.ID.String(), body.Name, body.Email, body.Image)
+		ctx.ID, body.Name, body.Email, body.Image)
 
 	if err != nil {
 		c.AbortWithStatusJSON(500, gin.H{"error": err.Error()})

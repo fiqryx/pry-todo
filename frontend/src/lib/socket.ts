@@ -1,19 +1,31 @@
 "use client";
+import { BACKEND_URL } from "@/types/internal";
 import { io, Socket } from "socket.io-client";
-import { useSupabaseClient } from "@/lib/supabase/client";
 
-export const socket = io(process.env.NEXT_PUBLIC_API_URL?.replace("/api", ''), {
+export const socket = io(new URL(BACKEND_URL).origin, {
     transports: ['websocket', 'webtransport'],
+    reconnectionAttempts: 3,
+    reconnectionDelay: 2000,
     auth: async (cb) => {
-        const supabase = useSupabaseClient()
-        const { data } = await supabase.auth.getSession()
-
-        if (!data.session) {
-            cb({})
-            return
+        if (typeof window === "undefined") {
+            cb({});
+            return;
         }
 
-        cb({ token: data.session.access_token })
+        try {
+            const response = await fetch('/api/session');
+            const data = await response.json();
+
+            if (!data?.token) {
+                cb({});
+                return;
+            }
+
+            cb({ token: data.token });
+        } catch (error) {
+            console.error("Failed to fetch session for socket:", error);
+            cb({});
+        }
     },
 });
 

@@ -4,25 +4,24 @@ import (
 	"errors"
 
 	"github.com/gin-gonic/gin"
-	supabase "github.com/supabase-community/gotrue-go/types"
 )
 
 type UserSupabase struct {
-	*supabase.UserResponse
+	ID string
 }
 
 func (u *UserSupabase) Get(ctx *gin.Context) error {
-	context, exist := ctx.Get("user")
+	contextID, exist := ctx.Get("user_id")
 	if !exist {
 		return errors.New("unauthorized")
 	}
 
-	user, ok := context.(*supabase.UserResponse)
+	userID, ok := contextID.(string)
 	if !ok {
 		return errors.New("unauthorized")
 	}
 
-	*u = UserSupabase{user}
+	u.ID = userID
 
 	return nil
 }

@@ -1,12 +1,9 @@
 import { site } from '@/config/site'
 import { createBrowserClient } from '@supabase/ssr'
 
-export function useSupabaseClient(schema?: string) {
+export function useSupabaseClient(url: string, key: string, schema?: string) {
     // Create a supabase client on the browser with project's credentials
-    return createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        {
+    return createBrowserClient(url, key, {
             db: { schema },
             cookieOptions: {
                 name: site.auth.key,

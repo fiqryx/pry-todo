@@ -11,7 +11,7 @@ import (
 
 type User struct {
 	ID        string                `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
-	ProjectID *string               `gorm:"type:uuid;column:project_id" json:"projectId,omitempty"`
+	ProjectID *string               `gorm:"type:uuid;column:project_id;index" json:"projectId,omitempty"`
 	Name      string                `gorm:"not null" json:"name"`
 	Email     string                `gorm:"not null" json:"email"`
 	Image     *string               `json:"image,omitempty"`

@@ -4,8 +4,8 @@ import "time"
 
 type Comment struct {
 	ID        string    `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()" json:"id"`
-	UserID    string    `gorm:"type:uuid" json:"userId"`
-	IssueID   string    `gorm:"type:uuid" json:"issueId"`
+	UserID    string    `gorm:"type:uuid;index" json:"userId"`
+	IssueID   string    `gorm:"type:uuid;index" json:"issueId"`
 	Message   string    `json:"message"`
 	CreatedAt time.Time `gorm:"column:created_at;default:now();<-:create" json:"createdAt"`
 	UpdatedAt time.Time `gorm:"column:updated_at;autoUpdateTime" json:"updatedAt"`

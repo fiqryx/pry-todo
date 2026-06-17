@@ -1,0 +1,13 @@
+FROM alpine:3.19
+RUN apk add --no-cache ca-certificates tzdata
+
+WORKDIR /app
+
+COPY .build/backend/backend ./backend
+RUN chmod +x backend
+
+COPY ./entrypoint.sh ./
+RUN chmod +x entrypoint.sh
+
+EXPOSE 8000
+ENTRYPOINT ["./entrypoint.sh"]

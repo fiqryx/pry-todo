@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { User } from "@/types/schemas/user"
 import { useAppStore } from "@/stores/app"
-import { useSupabaseClient } from "@/lib/supabase/client"
+import { useSupabase } from "./providers/supabase-provider"
 
 import {
   BadgeCheck,
@@ -42,7 +42,7 @@ export function NavUser({
 }) {
   const { set } = useAppStore()
   const { isMobile } = useSidebar()
-  const supabase = useSupabaseClient()
+  const supabase = useSupabase()
 
   return (
     <SidebarMenu>

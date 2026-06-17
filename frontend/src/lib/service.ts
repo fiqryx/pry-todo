@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
+import { BACKEND_URL } from '@/types/internal';
 
 type Response<T = object> = {
     code: number;
@@ -17,7 +18,7 @@ export async function service<T = object>(
     }
 
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`, {
+        const res = await fetch(`${BACKEND_URL}${endpoint}`, {
             ...options,
             // cache: 'no-store',
             headers: {

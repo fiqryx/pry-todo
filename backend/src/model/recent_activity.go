@@ -9,9 +9,9 @@ import (
 
 type RecentActivity struct {
 	ID           string             `gorm:"type:uuid;primaryKey;default:uuid_generate_v4()" json:"id"`
-	UserID       string             `gorm:"type:uuid;not null" json:"userId"`
-	ProjectID    *string            `gorm:"type:uuid" json:"projectId,omitempty"`
-	IssueID      *string            `gorm:"type:uuid" json:"issueId,omitempty"`
+	UserID       string             `gorm:"type:uuid;not null;index" json:"userId"`
+	ProjectID    *string            `gorm:"type:uuid;index" json:"projectId,omitempty"`
+	IssueID      *string            `gorm:"type:uuid;index" json:"issueId,omitempty"`
 	CommentID    *string            `gorm:"type:uuid" json:"commentId,omitempty"`
 	ItemID       *string            `gorm:"type:uuid" json:"itemId,omitempty"`
 	ActivityType types.ActivityType `gorm:"type:activity_type;not null" json:"type"`

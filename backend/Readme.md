@@ -1,3 +1,5 @@
+$env:GOOS="linux"; $env:GOARCH="arm64"; $env:CGO_ENABLED="0"; go build -ldflags="-w -s" -o backend main.go 
+
 ### Run the Application
 Start http server with default configuration:
 ```bash

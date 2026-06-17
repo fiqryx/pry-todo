@@ -3,9 +3,10 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, NextRequest } from 'next/server'
 
 
-// applies this middleware only to files in the app directory
 export const config = {
-    matcher: '/((?!api|static|.*\\..*|_next).*)'
+    matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\..*).*)'
+    ]
 }
 
 const ignore = [
@@ -23,8 +24,8 @@ const publics = [
 
 export async function middleware(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseSecret = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabaseKey = process.env.SUPABASE_URL;
+    const supabaseSecret = process.env.SUPABASE_ANON_KEY;
 
     if (supabaseKey && supabaseSecret) {
         let supabaseResponse = NextResponse.next({ request });
@@ -48,7 +49,8 @@ export async function middleware(request: NextRequest) {
             },
         });
 
-        const { data: { user } } = await supabase.auth.getUser()
+        const { data: { session } } = await supabase.auth.getSession()
+        const user = session?.user;
         const isAuthRoute = ignore.some((v) => new RegExp('^' + v.replace(/\*/g, '.*') + '$').test(pathname));
 
         // redirect to /sign-n if not authenticated
@@ -67,5 +69,4 @@ export async function middleware(request: NextRequest) {
 
         return supabaseResponse
     }
-
 }
