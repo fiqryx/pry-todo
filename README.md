@@ -38,101 +38,14 @@ You'll also need accounts and API keys for:
 - [Cloudinary](https://cloudinary.com/) (File Storage)
 - SMTP Email Service (Gmail, SendGrid, etc.)
 
-## 🚀 Quick Start
-
-### 1. Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/fiqryx/pry-todo.git
 cd pry-todo
 ```
 
-### 2. Environment Setup
-
-Copy the environment example files:
-
-```bash
-# Backend environment
-cp backend/.env.example backend/.env
-
-# Frontend environment  
-cp frontend/.env.example frontend/.env
-```
-
-### 3. Configure Environment Variables
-
-Add the following variables to both `backend/.env` and `frontend/.env`:
-
-```env
-# Database
-DATABASE_URL=your_postgresql_connection_string
-
-# Supabase Configuration
-SUPABASE_URL=your_supabase_project_url
-SUPABASE_JWT_SECRET=your_supabase_jwt_secret
-SUPABASE_ANON_KEY=your_supabase_anon_key
-
-# Cloudinary Configuration
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-# Email Configuration
-MAIL_HOST=your_smtp_host
-MAIL_PORT=your_smtp_port
-MAIL_USERNAME=your_email_username
-MAIL_PASSWORD=your_email_password
-```
-
-### 4. Install Dependencies & Run
-
-**Backend (Go):**
-```bash
-cd backend
-go mod download
-go run main.go
-```
-
-**Frontend (Next.js):**
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-The application will be available at:
-- Frontend: `http://localhost:3001`
-- Backend API: `http://localhost:8000`
-
-## 🔧 Configuration Details
-
-### Database Setup
-PryTodo uses PostgreSQL which can be set up locally:
-1. Install PostgreSQL on your system
-2. Create a new database: createdb prytodo
-3. Set your DATABASE_URL to: postgresql://username:password@localhost:5432/prytodo
-
-### Cloudinary Setup
-1. Create a Cloudinary account
-2. Navigate to your Dashboard
-3. Copy the Cloud Name, API Key, and API Secret
-
-### Email Configuration
-Configure your SMTP settings for email notifications:
-- **Gmail**: Use App Passwords for authentication
-- **SendGrid**: Use your API key as the password
-- **Custom SMTP**: Use your server credentials
-
-## 📱 Usage
-
-1. **Create Projects** - Set up new projects with custom workflows
-2. **Manage Tasks** - Add, edit, and organize tasks in your backlog
-3. **Use Kanban Board** - Drag and drop tasks between columns
-4. **Track Progress** - Monitor project timeline and analytics
-5. **Collaborate** - Invite team members and assign tasks
-
-
-## How to build
+### How to build
 - **Windows**
 ```bash
 $ ./build.sh --os windows --arch amd64
@@ -155,8 +68,66 @@ $ cp .build/frontend/.env.example .build/frontend/.env
 $ docker compose up -d --build
 ```
 
-## 🤝 Contributing
+### Manual Environment Setup
 
+Copy the environment example files:
+
+```bash
+# Backend environment
+cp backend/.env.example backend/.env
+
+# Frontend environment  
+cp frontend/.env.example frontend/.env
+```
+
+### Configure Environment Variables
+
+Add the following variables to both `backend/.env` and `frontend/.env`:
+
+```env
+# Database
+DATABASE_URL=your_postgresql_connection_string
+
+# Supabase Configuration
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_JWT_SECRET=your_supabase_jwt_secret
+SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Email Configuration
+MAIL_HOST=your_smtp_host
+MAIL_PORT=your_smtp_port
+MAIL_USERNAME=your_email_username
+MAIL_PASSWORD=your_email_password
+```
+
+### Install Dependencies & Run
+
+**Backend (Go):**
+```bash
+cd backend
+go mod download
+go run main.go serve
+```
+
+**Frontend (Next.js):**
+```bash
+cd frontend
+bun install
+bun run dev
+```
+
+The application will be available at:
+- Frontend: `http://localhost:3001`
+- Backend API: `http://localhost:8000`
+
+## 📱 Usage
+1. **Create Projects** - Set up new projects with custom workflows
+2. **Manage Tasks** - Add, edit, and organize tasks in your backlog
+3. **Use Kanban Board** - Drag and drop tasks between columns
+4. **Track Progress** - Monitor project timeline and analytics
+5. **Collaborate** - Invite team members and assign tasks
+
+## 🤝 Contributing
 We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 1. Fork the Project
@@ -166,11 +137,9 @@ We welcome contributions! Please feel free to submit a Pull Request. For major c
 5. Open a Pull Request
 
 ## 📄 License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🆘 Support
-
 If you encounter any issues or have questions:
 
 1. Check the [Issues](https://github.com/fiqryx/pry-todo/issues) page
@@ -178,7 +147,6 @@ If you encounter any issues or have questions:
 3. Contact the maintainers
 
 ## 🎯 Roadmap
-
 - [&check;] Mobile responsive design improvements
 - [&check;] Advanced filtering and search
 - [ ] Integration with third-party tools
