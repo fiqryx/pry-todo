@@ -24,7 +24,7 @@ import { Translate, translateText } from "@/components/translate";
 import { InputEditor, InputTiptapEditor } from "@/components/input-editor";
 import { IssueItem, IssueItemType } from "@/types/schemas/issue-item";
 import { createIssueItem, deleteIssueItem } from "@/lib/services/issue-item";
-import { cloudinaryUpload, deleteCloudinary } from "@/lib/services/cloudinary";
+import { supabaseBucketUpload, supabaseBucketDelete } from "@/lib/supabase/bucket";
 
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { BacklogChildTable, BacklogDetailTable, WrtieIssueItemTable } from "./backlog-table";
@@ -80,12 +80,11 @@ export function BacklogDetail({ issue }: BacklogDetailProps) {
             try {
                 const file = files[0];
                 logger.debug("uploading attachment", file)
-                const result = await cloudinaryUpload(file, 'attachments')
+                const result = await supabaseBucketUpload(file, 'attachments')
                 const { data, error } = await createIssueItem(issue.id, {
                     type: 'attachment',
-                    url: result.secure_url,
-                    publicId: result.public_id,
-                    assetId: result?.asset_id,
+                    url: result.url,
+                    publicId: result.path,
                     text: file.name
                 })
                 if (!data) throw error;
@@ -133,7 +132,7 @@ export function BacklogDetail({ issue }: BacklogDetailProps) {
                 return;
             }
             try {
-                if (item.publicId) await deleteCloudinary(item.publicId); // ignore fail
+                if (item.publicId) await supabaseBucketDelete(item.publicId, 'attachments'); // ignore fail
                 const { error } = await deleteIssueItem(item.id, issueId);
                 if (error) throw error;
                 setIssueItems((prev) => prev.filter(v => v.id !== item.id));

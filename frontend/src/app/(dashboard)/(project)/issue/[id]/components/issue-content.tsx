@@ -11,7 +11,7 @@ import { InputEditor } from "@/components/input-editor";
 import { IssueDescription } from "./issue-description";
 import { IssueItem, IssueItemType } from "@/types/schemas/issue-item";
 import { IssueWebLink } from "./issue-web-link";
-import { deleteCloudinary } from "@/lib/services/cloudinary";
+import { supabaseBucketDelete } from "@/lib/supabase/bucket";
 import { deleteIssueItem } from "@/lib/services/issue-item";
 import { IssueChilds } from "./issue-childs";
 import { IssueActivity } from "@/components/issue-activity";
@@ -39,7 +39,7 @@ export function IssueContent({
     const onDeleteItem = useCallback(async (item: IssueItem) => {
         if (!levelAdmin || !issue) return;
         try {
-            if (item.publicId) await deleteCloudinary(item.publicId);
+            if (item.publicId) await supabaseBucketDelete(item.publicId, 'attachments');
             const { error } = await deleteIssueItem(item.id, issue.id);
             if (error) {
                 throw new Error(error);

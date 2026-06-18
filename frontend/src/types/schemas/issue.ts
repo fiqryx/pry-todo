@@ -29,8 +29,8 @@ export const issueSchema = z.object({
         { message: 'Status value is not valid' }
     ),
     assigneeId: z.string().optional(),
-    startDate: z.date().optional(),
-    dueDate: z.date().optional(),
+    startDate: z.preprocess((val) => (val === null ? undefined : val), z.date().optional()),
+    dueDate: z.preprocess((val) => (val === null ? undefined : val), z.date().optional()),
     label: z.string().optional(),
     reporterId: z.string().optional(),
     description: z.string().optional(),

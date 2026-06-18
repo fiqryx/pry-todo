@@ -15,7 +15,8 @@ import { CameraIcon } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { AvatarWithPreview } from "@/components/image-preview"
 import { ImageCropper } from "@/components/image-cropper"
-import { cloudinaryUpload } from "@/lib/services/cloudinary"
+// import { cloudinaryUpload } from "@/lib/services/cloudinary"
+import { supabaseBucketUpload } from "@/lib/supabase/bucket"
 
 import { User as SupabaseUser } from "@supabase/supabase-js"
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form"
@@ -70,11 +71,11 @@ export function UserCreateForm({ data }: Props) {
 
                 let imageUrl = data.user_metadata?.avatar_url;
                 if (value.image) {
-                    const res = await cloudinaryUpload(
+                    const res = await supabaseBucketUpload(
                         value.image,
                         'user_profile_images'
                     );
-                    imageUrl = res.secure_url;
+                    imageUrl = res.url;
                 }
 
                 const res = await registerUser({

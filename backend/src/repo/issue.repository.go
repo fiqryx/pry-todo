@@ -160,6 +160,8 @@ func (r *IssueRepository) UpdateTx(tx *gorm.DB, issue *model.Issue) error {
 		"parents":     issue.Parents,
 		"updated_at":  time.Now(),
 		"done_date":   issue.DoneDate,
+		"start_date":  issue.StartDate,
+		"due_date":    issue.DueDate,
 	}
 
 	if err := tx.Model(issue).Omit("Order").

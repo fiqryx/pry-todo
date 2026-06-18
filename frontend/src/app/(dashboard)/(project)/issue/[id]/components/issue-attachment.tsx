@@ -14,7 +14,7 @@ import { useCallback, useRef, useState } from 'react';
 import { IssueItem } from '@/types/schemas/issue-item';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { createIssueItem } from '@/lib/services/issue-item';
-import { cloudinaryUpload } from '@/lib/services/cloudinary';
+import { supabaseBucketUpload } from '@/lib/supabase/bucket';
 
 interface IssueAttactmentProps extends
     React.ComponentProps<'div'> {
@@ -51,12 +51,11 @@ export function IssueAttachment({
             try {
                 const file = files[0];
                 logger.debug("uploading attachment", file)
-                const result = await cloudinaryUpload(file, 'attachments')
+                const result = await supabaseBucketUpload(file, 'attachments')
                 const { data, error } = await createIssueItem(issue.id, {
                     type: 'attachment',
-                    url: result.secure_url,
-                    publicId: result.public_id,
-                    assetId: result?.asset_id,
+                    url: result.url,
+                    publicId: result.path,
                     text: file.name
                 });
                 if (!data) throw error;

@@ -258,3 +258,10 @@ export function cloudinaryPublicId(url: string) {
   if (!match) return
   return match[1];
 }
+
+export function supabaseExtractPath(url: string, bucket: string) {
+  if (!url) return;
+  const marker = `/public/${bucket}/`;
+  const parts = url.split(marker);
+  if (parts.length > 1) return parts[1];
+}

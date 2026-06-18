@@ -3,10 +3,8 @@ import localFont from "next/font/local";
 import { i18nInitialize } from '@/lib/i18n';
 
 import { Toaster } from "@/components/ui/toaster"
-// import { Analytics } from '@vercel/analytics/next';
 import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 import { AppProvider } from "@/components/providers/app-provider";
-// import { MapProvider } from "@/components/providers/mapbox-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { I18nProvider } from "@/components/providers/i18n-provider";
 
@@ -18,7 +16,7 @@ import { SupabaseProvider } from "@/components/providers/supabase-provider";
 
 type Props = Readonly<{
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale?: string }>
 }>
 
 const namespaces = ['translation']
@@ -40,7 +38,7 @@ export default async function RootLayout({ children, params }: Props) {
   const supabaseKey = process.env.SUPABASE_ANON_KEY || '';
 
   const cookie = await cookies();
-  const locale = cookie.get("LOCALE")?.value ?? params.locale;
+  const locale = cookie.get("LOCALE")?.value || (await params)?.locale || 'en';
   const { resources } = await i18nInitialize(locale, namespaces);
 
   return (

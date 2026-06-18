@@ -4,7 +4,7 @@ import { toast } from "sonner"
 import { logger } from "@/lib/logger"
 import { useForm } from "react-hook-form"
 import { useProject } from "@/stores/project"
-import { cloudinaryPublicId, cn } from "@/lib/utils"
+import { cn, supabaseExtractPath } from "@/lib/utils"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { CameraIcon } from "lucide-react"
@@ -20,7 +20,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ImageCropper } from "@/components/image-cropper"
 import { AvatarWithPreview } from "@/components/image-preview"
 import { Translate, translateText } from "@/components/translate"
-import { cloudinaryUpload, deleteCloudinary } from "@/lib/services/cloudinary"
+import { supabaseBucketUpload, supabaseBucketDelete } from "@/lib/supabase/bucket"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 
 // Form validation schema
@@ -91,13 +91,13 @@ export function SettingsAccount({
         try {
             let secureUrl = "";
             if (values.photo) {
-                const res = await cloudinaryUpload(values.photo, 'user_profile_images');
-                secureUrl = res.secure_url;
+                const res = await supabaseBucketUpload(values.photo, 'user_profile_images');
+                secureUrl = res.url;
 
                 // remove previous image
                 if (user?.image) {
-                    const publicId = cloudinaryPublicId(user.image);
-                    if (publicId) deleteCloudinary(publicId);
+                    const oldPath = supabaseExtractPath(user.image, 'user_profile_images');
+                    if (oldPath) supabaseBucketDelete(oldPath, 'user_profile_images');
                 }
             }
 

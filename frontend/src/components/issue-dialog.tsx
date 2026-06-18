@@ -210,7 +210,7 @@ export function IssueFormDialog({
                                                                     mode="single"
                                                                     locale={locale}
                                                                     selected={field.value}
-                                                                    onSelect={field.onChange}
+                                                                    onSelect={(date) => field.onChange(date || null)}
                                                                 />
                                                             </PopoverContent>
                                                         </Popover>
@@ -243,7 +243,7 @@ export function IssueFormDialog({
                                                                     mode="single"
                                                                     locale={locale}
                                                                     selected={field.value}
-                                                                    onSelect={field.onChange}
+                                                                    onSelect={(date) => field.onChange(date || null)}
                                                                     disabled={(date) => {
                                                                         const startDate = form.watch('startDate');
                                                                         if (!startDate) return false;
