@@ -37,3 +37,4 @@ go.work
 # nodemon.json
 .vscode
 .build
+notes.md

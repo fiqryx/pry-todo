@@ -3,15 +3,16 @@
 # ==========================================
 # Default Parameters & Version
 # ==========================================
-APP_VERSION="1.1.0"
+APP_VERSION="1.1.1"
 TARGET_OS="linux"
 TARGET_ARCH="arm64"
 
 # ==========================================
-# Parse Arguments (e.g., ./build.sh --os windows --arch amd64)
+# Parse Arguments (e.g., ./build.sh --os windows --arch amd64 --version 1.0.0)
 # ==========================================
 while [[ "$#" -gt 0 ]]; do
     case $1 in
+        --version) APP_VERSION="$2"; shift ;;
         --os) TARGET_OS="$2"; shift ;;
         --arch) TARGET_ARCH="$2"; shift ;;
         *) echo "Unknown parameter passed: $1"; exit 1 ;;
